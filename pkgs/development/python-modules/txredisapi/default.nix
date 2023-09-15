@@ -2,13 +2,13 @@
 
 buildPythonPackage rec {
   pname = "txredisapi";
-  version = "1.4.7";
+  version = "1.4.9";
 
   src = fetchFromGitHub {
     owner = "IlyaSkriblovsky";
     repo = "txredisapi";
-    rev = "1.4.7";
-    sha256 = "1f7j3c5l7jcfphvsk7nqmgyb4jaydbzq081m555kw0f9xxak0pgq";
+    rev = "refs/tags/${version}";
+    sha256 = "sha256-6Z2vurTAw9YHxvEiixtdxBH0YHj+Y9aTdsSkafPMZus=";
   };
 
   propagatedBuildInputs = [ six twisted ];
