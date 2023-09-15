@@ -10,7 +10,7 @@
 
 buildPythonPackage rec {
   pname = "willow";
-  version = "1.5.1";
+  version = "1.6.2";
   format = "setuptools";
 
   disabled = pythonOlder "2.7";
@@ -18,7 +18,7 @@ buildPythonPackage rec {
   src = fetchPypi {
     pname = "Willow";
     inherit version;
-    hash = "sha256-t6SQkRATP9seIodZLgZzzCVeAobhzVNCfuaN8ckiDEw=";
+    hash = "sha256-4tBFD9eKsZBS0EeLiI7xY+MmTo3NGvAC3WkUWNuYBW8=";
   };
 
   propagatedBuildInputs = [
