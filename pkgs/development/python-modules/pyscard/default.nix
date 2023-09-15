@@ -6,12 +6,12 @@ let
 in
 
 buildPythonPackage rec {
-  version = "2.0.2";
+  version = "2.0.7";
   pname = "pyscard";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "05de0579c42b4eb433903aa2fb327d4821ebac262434b6584da18ed72053fd9e";
+    sha256 = "sha256-J4BUUl+nX76LEEYNh+3NA6cK2U1oixE0Xkc5mH+Fwb8=";
   };
 
   patches = [
