@@ -11,14 +11,14 @@
 
 buildPythonPackage rec {
   pname = "h5netcdf";
-  version = "1.1.0";
+  version = "1.2.0";
   format = "setuptools";
 
   disabled = pythonOlder "3.6";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-kyw7Vzvtc3Dr/J6ALNYPGk2lI277EbNu7/iXMk12v1Y=";
+    hash = "sha256-f2snM73gbqJXW3mmRQ2b1cOJGP9MsqNVvyK76Mhsa88=";
   };
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;
