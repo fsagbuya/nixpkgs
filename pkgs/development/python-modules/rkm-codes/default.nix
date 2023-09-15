@@ -7,13 +7,13 @@
 
 buildPythonPackage rec {
   pname = "rkm-codes";
-  version = "0.5";
+  version = "0.6";
 
   src = fetchFromGitHub {
     owner = "KenKundert";
     repo = "rkm_codes";
-    rev = "v${version}";
-    hash = "sha256-r4F72iHxH7BoPtgYm1RD6BeSZszKRrpeBQccmT4wzuw=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-CkLLZuWcNL8sqAupc7lHXu0DXUXrX3qwd1g/ekyHdw4=";
   };
 
   format = "pyproject";
