@@ -15,13 +15,13 @@
 
 buildPythonPackage rec {
   pname = "parametrize-from-file";
-  version = "0.17.0";
+  version = "0.18.0";
   format = "flit";
 
   src = fetchPypi {
     inherit version;
     pname = "parametrize_from_file";
-    hash = "sha256-suxQht9YS+8G0RXCTuEahaI60daBda7gpncLmwySIbE=";
+    hash = "sha256-mYE8J7XWlvCS2H3kt0bB8dyPHFDqmW8NiH9UCrNccAU=";
   };
 
   patches = [
