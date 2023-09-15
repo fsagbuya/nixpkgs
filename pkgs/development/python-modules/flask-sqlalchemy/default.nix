@@ -11,7 +11,7 @@
 
 buildPythonPackage rec {
   pname = "flask-sqlalchemy";
-  version = "3.0.3";
+  version = "3.1.1";
   format = "pyproject";
 
   disabled = pythonOlder "3.9";
@@ -19,7 +19,7 @@ buildPythonPackage rec {
   src = fetchPypi {
     pname = "Flask-SQLAlchemy";
     inherit version;
-    hash = "sha256-J2QzXzydfr3J7WBEr6+Yqun6UNegdM71Xd4wfslZA+w=";
+    hash = "sha256-5LaLuIGALdoafYeLL8hMBtHuV/tAuHTT3Jfav6NrgxI=";
   };
 
   nativeBuildInputs = [
