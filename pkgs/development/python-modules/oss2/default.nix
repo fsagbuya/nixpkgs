@@ -16,7 +16,7 @@
 
 buildPythonPackage rec {
   pname = "oss2";
-  version = "2.17.0";
+  version = "2.18.1";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
@@ -25,7 +25,7 @@ buildPythonPackage rec {
     owner = "aliyun";
     repo = "aliyun-oss-python-sdk";
     rev = "refs/tags/${version}";
-    hash = "sha256-EL6qbtVyOJ2RGw3sZiRJouqVNLBMUKGycAZl31M1+oQ=";
+    hash = "sha256-4P2o10FhnLwRkhRYS+LzY+ugWPQgz+Tddn9XYR17018=";
   };
 
   nativeBuildInputs = [
