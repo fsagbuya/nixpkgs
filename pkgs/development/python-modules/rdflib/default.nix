@@ -4,6 +4,9 @@
 , fetchFromGitHub
 , pythonOlder
 
+# builds
+, poetry-core
+
 # propagates
 , isodate
 , pyparsing
@@ -25,17 +28,21 @@
 
 buildPythonPackage rec {
   pname = "rdflib";
-  version = "6.2.0";
-  format = "setuptools";
+  version = "7.0.0";
+  format = "pyproject";
 
-  disabled = pythonOlder "3.7";
+  disabled = pythonOlder "3.8";
 
   src = fetchFromGitHub {
     owner = "RDFLib";
     repo = pname;
     rev = "refs/tags/${version}";
-    hash = "sha256-GkqfSyApOFKPIiIYXhgaRZuMawk7PRYmxGDhnRI+Rz0=";
+    hash = "sha256-VCjvgXMun1Hs+gPeqjzLXbIX1NBQ5aMLz0aWlwsm0iY=";
   };
+
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     isodate
