@@ -8,14 +8,14 @@
 
 buildPythonPackage rec {
   pname = "reedsolo";
-  version = "1.5.4";
+  version = "1.7.0";
 
   # Pypi does not have the tests
   src = fetchFromGitHub {
     owner = "tomerfiliba";
     repo = "reedsolomon";
-    rev = "v${version}";
-    hash = "sha256-GUMdL5HclXxqMYasq9kUE7fCqOkjr1D20wjd/E+xPBk=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-nzdD1oGXHSeGDD/3PpQQEZYGAwn9ahD2KNYGqpgADh0=";
   };
 
   patches = [
