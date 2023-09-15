@@ -6,13 +6,13 @@
 
 buildPythonPackage rec {
   pname = "palettable";
-  version = "3.3.2";
+  version = "3.3.3";
 
   format = "setuptools";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-aoZ8Qlov8ojqtDVr7ewA3gBt7jbJmmFHwuGwXeeJrJ8=";
+    sha256 = "sha256-CU3X2aX8HMpIVHc+XB/GoxWzO9WzqPRwZJKPrK8EkKg=";
   };
 
   nativeCheckInputs = [
