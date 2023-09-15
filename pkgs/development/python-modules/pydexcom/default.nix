@@ -6,13 +6,13 @@
 
 buildPythonPackage rec {
   pname = "pydexcom";
-  version = "0.2.3";
+  version = "0.3.1";
 
   src = fetchFromGitHub {
     owner = "gagebenne";
     repo = pname;
-    rev = version;
-    hash = "sha256-ItDGnUUUTwCz4ZJtFVlMYjjoBPn2h8QZgLzgnV2T/Qk=";
+    rev = "refs/tags/${version}";
+    hash = "sha256-VZ8Y8W3oEQ3W8eubMbHLfQAXK8cL6+OTyBFwtEe0cBE=";
   };
 
   propagatedBuildInputs = [ requests ];
