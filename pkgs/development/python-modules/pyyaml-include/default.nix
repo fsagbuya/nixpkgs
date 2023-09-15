@@ -8,11 +8,11 @@
 
 buildPythonPackage rec {
   pname = "pyyaml-include";
-  version = "1.3";
+  version = "1.3.1";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-9/vrjnG1C+Dm4HRy98edv7GhW63pyToHg2n/SeV+Z3E=";
+    hash = "sha256-TLO04bquLsJRgI/h6K7V09IGmcVBhkyOR+2GarLxUDk=";
   };
 
   nativeBuildInputs = [
