@@ -20,7 +20,7 @@
 
 let
   pname = "django-redis";
-  version = "5.2.0";
+  version = "5.3.0";
 in
 buildPythonPackage {
   inherit pname version;
@@ -30,8 +30,8 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "jazzband";
     repo = "django-redis";
-    rev = version;
-    hash = "sha256-e8wCgfxBT+WKFY4H83CTMirTpQym3QAoeWnXbRCDO90=";
+    rev = "refs/tags/${version}";
+    hash = "sha256-eX9rUUvpkRrkZ82YalWn8s9DTw6nsbGzi1A6ibRoQGw=";
   };
 
   postPatch = ''
@@ -76,12 +76,14 @@ buildPythonPackage {
     # ModuleNotFoundError: No module named 'test_cache_options'
     "test_custom_key_function"
     # ModuleNotFoundError: No module named 'test_client'
+    "test_delete_pattern_calls_delete_for_given_keys"
     "test_delete_pattern_calls_get_client_given_no_client"
     "test_delete_pattern_calls_make_pattern"
-    "test_delete_pattern_calls_scan_iter_with_count_if_itersize_given"
-    "test_delete_pattern_calls_scan_iter_with_count_if_itersize_given"
+    "test_delete_pattern_calls_pipeline_delete_and_execute"
     "test_delete_pattern_calls_scan_iter"
-    "test_delete_pattern_calls_delete_for_given_keys"
+    "test_delete_pattern_calls_scan_iter_with_count_if_itersize_given"
+    "test_delete_pattern_calls_scan_iter_with_count_if_itersize_given"
+
   ];
 
   meta = with lib; {
