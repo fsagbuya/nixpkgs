@@ -9,13 +9,13 @@
 
 buildPythonPackage rec {
   pname = "castepxbin";
-  version = "0.2.0";
+  version = "0.3.0";
 
   src = fetchFromGitHub {
     owner = "zhubonan";
     repo = "castepxbin";
-    rev = "v${version}";
-    sha256 = "0bqicpdyisbcz8argy4ppm59zzkcn9lcs4y1mh2f31f75x732na3";
+    rev = "refs/tags/v${version}";
+    sha256 = "sha256-6kumVnm4PLRxuKO6Uz0iHzfYuu21hFC7EPRsc3S1kxE=";
   };
 
   propagatedBuildInputs = [
