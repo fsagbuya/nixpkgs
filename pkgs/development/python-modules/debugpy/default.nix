@@ -20,7 +20,7 @@
 
 buildPythonPackage rec {
   pname = "debugpy";
-  version = "1.6.7.post1";
+  version = "1.8.0";
   format = "setuptools";
 
   # Currently doesn't support 3.11:
@@ -31,7 +31,7 @@ buildPythonPackage rec {
     owner = "microsoft";
     repo = "debugpy";
     rev = "refs/tags/v${version}";
-    hash = "sha256-zsF6XUSAAKhwmUZkroRWvOBWXjTWzWuRYOhnYuN3KrY=";
+    hash = "sha256-FW1RDmj4sDBS0q08C82ErUd16ofxJxgVaxfykn/wVBA=";
   };
 
   patches = [
