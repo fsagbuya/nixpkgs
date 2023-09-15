@@ -2,7 +2,7 @@
 
 buildPythonPackage rec {
   pname = "diff-match-patch";
-  version = "20200713";
+  version = "20230430";
 
   meta = {
     homepage = "https://github.com/diff-match-patch-python/diff-match-patch";
@@ -12,7 +12,7 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "da6f5a01aa586df23dfc89f3827e1cafbb5420be9d87769eeb079ddfd9477a18";
+    sha256 = "sha256-lTAZzbnJ0snke1sSvP889HRvxFmOtAYHb6H8J+ah8Vw=";
   };
 
   checkPhase = ''
