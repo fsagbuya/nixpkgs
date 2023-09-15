@@ -60,15 +60,15 @@ let
 in
 buildPythonPackage rec {
   pname = "tokenizers";
-  version = "0.13.3";
+  version = "0.14.0";
 
   disabled = pythonOlder "3.7";
 
   src = fetchFromGitHub {
     owner = "huggingface";
     repo = pname;
-    rev = "python-v${version}";
-    hash = "sha256-QZG5jmr3vbyQs4mVBjwVDR31O66dUM+p39R0htJ1umk=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-zCpKNMzIdQ0lLWdn4cENtBEMTA7+fg+N6wQGvio9llE=";
   };
 
   postPatch = ''
