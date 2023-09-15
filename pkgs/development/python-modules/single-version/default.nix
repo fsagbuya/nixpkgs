@@ -8,14 +8,14 @@
 
 buildPythonPackage rec {
   pname = "single-version";
-  version = "1.5.1";
+  version = "1.6.0";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "hongquan";
     repo = pname;
-    rev = "v${version}";
-    hash = "sha256-I8ATQzPRH9FVjqPoqrNjYMBU5azpmkLjRmHcz943C10=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-dUmJhNCPuq/7WGzFQXLjb8JrQgQn7qyBqzPWaKzD9hc=";
   };
 
   patches = [
