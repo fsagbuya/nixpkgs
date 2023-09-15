@@ -11,7 +11,7 @@
 
 buildPythonPackage rec {
   pname = "pyeapi";
-  version = "0.8.4";
+  version = "1.0.2";
   format = "pyproject";
 
   disabled = pythonOlder "3.7";
@@ -19,8 +19,8 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "arista-eosplus";
     repo = pname;
-    rev = "v${version}";
-    sha256 = "13chya6wix5jb82k67gr44bjx35gcdwz80nsvpv0gvzs6shn4d7b";
+    rev = "refs/tags/v${version}";
+    sha256 = "sha256-GZBoCoAqij54rZezRDF/ihJDQ5T6FFyDSRXGV3//avQ=";
   };
 
   nativeBuildInputs = [
