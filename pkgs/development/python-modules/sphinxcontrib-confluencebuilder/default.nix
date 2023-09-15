@@ -9,11 +9,11 @@
 
 buildPythonPackage rec {
   pname = "sphinxcontrib-confluencebuilder";
-  version = "2.0.0";
+  version = "2.3.0";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-RyShQt/t8tnE5ZHM0WDQ+jrvXem3y24tCpj3s6Thq+g=";
+    hash = "sha256-Zpe2n131afnq4IhQEEZtquvSEkkjv/uznXt2tQhGfZA=";
   };
 
   propagatedBuildInputs = [
