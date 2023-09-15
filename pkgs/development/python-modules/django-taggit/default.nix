@@ -10,14 +10,14 @@
 
 buildPythonPackage rec {
   pname = "django-taggit";
-  version = "3.1.0";
+  version = "4.0.0";
   format = "setuptools";
 
   disabled = pythonOlder "3.6";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-yPLk6uOHk5CJs9ddHYZJ4AiICXDAaM6dDoL4f9XilQg=";
+    hash = "sha256-TVLenTckWpufmMDscf3M8dIoPjjohm1Ap65qO2eHoWE=";
   };
 
   patches = [
