@@ -8,13 +8,13 @@
 
 buildPythonPackage rec {
   pname = "python-flirt";
-  version = "0.8.6";
+  version = "0.8.8";
 
   src = fetchFromGitHub {
     owner = "williballenthin";
     repo = "lancelot";
-    rev = "v${version}";
-    hash = "sha256-J48tRgJw6JjUrcAQdRELFE50pyDptbmbgYbr+rAK/PA=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-cUA4xUiSjJGSG9nPaJltCkTEFb/Ha3H0EAJhjRtTNDc=";
   };
 
   postPatch = ''
