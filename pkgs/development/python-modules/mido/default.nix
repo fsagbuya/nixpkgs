@@ -10,11 +10,11 @@
 
 buildPythonPackage rec {
   pname = "mido";
-  version = "1.2.10";
+  version = "1.3.0";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "17b38a8e4594497b850ec6e78b848eac3661706bfc49d484a36d91335a373499";
+    sha256 = "sha256-hCguOs40vKP5hCINstvLmCRc/q+4VCYMAuAAdQ3Khqo=";
   };
 
   patches = [
