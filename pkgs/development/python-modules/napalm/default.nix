@@ -5,7 +5,7 @@
 
 buildPythonPackage rec {
   pname = "napalm";
-  version = "3.4.1";
+  version = "4.1.0";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
@@ -13,8 +13,8 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "napalm-automation";
     repo = "napalm";
-    rev = version;
-    hash = "sha256-TNWRJtc6+VS6wgJGGvCPDoFQmOKQAyXdjFQo9bPJ2F8=";
+    rev = "refs/tags/${version}";
+    hash = "sha256-JqjuYMJcP58UMn1pPYg7x8KpqCKQUs19Ng9HbI2iX38=";
   };
 
   patches = [
