@@ -17,7 +17,7 @@
 
 buildPythonPackage rec {
   pname = "einops";
-  version = "0.6.0";
+  version = "0.6.1";
   format = "pyproject";
 
   disabled = pythonOlder "3.7";
@@ -26,7 +26,7 @@ buildPythonPackage rec {
     owner = "arogozhnikov";
     repo = pname;
     rev = "refs/tags/v${version}";
-    hash = "sha256-/bnp8IhDxp8EB/PoW5Dz+7rOru0/odOrts84aq4qyJw=";
+    hash = "sha256-+TaxaxOc5jAm79tIK0NHZ58HgcgdCANrSo/602YaF8E=";
   };
 
   nativeBuildInputs = [ hatchling ];
