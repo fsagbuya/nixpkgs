@@ -11,7 +11,7 @@
 
 buildPythonPackage rec {
   pname = "pyrevolve";
-  version = "2.2.2";
+  version = "2.2.3";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
@@ -20,7 +20,7 @@ buildPythonPackage rec {
     owner = "devitocodes";
     repo = pname;
     rev = "refs/tags/v${version}";
-    hash = "sha256-JLDn3WEBcdO8YYzt/MWOHB/1kcmbmZUsiH00/4Uwlxo=";
+    hash = "sha256-z1G8DXG06Capd87x02zqrtYyBrX4xmJP94t4bgaR2PE=";
   };
 
   nativeBuildInputs = [
