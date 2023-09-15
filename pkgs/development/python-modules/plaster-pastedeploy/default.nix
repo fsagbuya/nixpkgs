@@ -9,11 +9,11 @@
 
 buildPythonPackage rec {
   pname = "plaster-pastedeploy";
-  version = "0.6";
+  version = "1.0.1";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "c231130cb86ae414084008fe1d1797db7e61dc5eaafb5e755de21387c27c6fae";
+    sha256 = "sha256-viYubS5BpyZIddqi/ihQy7BhVyi83JKCj9xyc244FBI=";
   };
 
   patches = [
