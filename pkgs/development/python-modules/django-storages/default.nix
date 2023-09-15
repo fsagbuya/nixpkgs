@@ -12,11 +12,11 @@
 
 buildPythonPackage rec {
   pname = "django-storages";
-  version = "1.13.2";
+  version = "1.14";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-y63RXJCc63JH1P/FA/Eqm+w2mZ340L73wx5XF31RJog=";
+    hash = "sha256-bJfl+q2CnJI6EmIgYoF0LEhNdtQ7MyoZbdzCQrkJxVE=";
   };
 
   propagatedBuildInputs = [
