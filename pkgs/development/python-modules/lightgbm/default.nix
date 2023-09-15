@@ -17,14 +17,14 @@
 
 buildPythonPackage rec {
   pname = "lightgbm";
-  version = "3.3.5";
+  version = "4.1.0";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-ELj73PhR5PaKHwLzjZm9xEx8f7mxpi3PkkoNKf9zOVw=";
+    hash = "sha256-vuWd0mmpOwk/LGENSmaDp+qHxj0+o1xiISPOLAILKrw=";
   };
 
   nativeBuildInputs = [
