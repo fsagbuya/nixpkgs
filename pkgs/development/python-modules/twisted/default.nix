@@ -1,11 +1,16 @@
 { lib
 , stdenv
 , buildPythonPackage
-, pythonAtLeast
 , pythonOlder
 , fetchPypi
 , fetchpatch
 , python
+
+# build-system
+, hatchling
+, hatch-fancy-pypi-readme
+
+# dependencies
 , appdirs
 , attrs
 , automat
@@ -46,16 +51,15 @@
 
 buildPythonPackage rec {
   pname = "twisted";
-  version = "22.10.0";
-  format = "setuptools";
+  version = "23.8.0";
+  format = "pyproject";
 
   disabled = pythonOlder "3.6";
 
   src = fetchPypi {
-    pname = "Twisted";
-    inherit version;
+    inherit pname version;
     extension = "tar.gz";
-    hash = "sha256-Mqy9QKlPX0bntCwQm/riswIlCUVWF4Oot6BZBI8tTTE=";
+    hash = "sha256-PHM2Ct0XM2piLA2BHCos4phmtuWbESX9ZQmxclIJiiQ=";
   };
 
   patches = [
@@ -70,26 +74,14 @@ buildPythonPackage rec {
       url = "https://github.com/mweinelt/twisted/commit/e69e652de671aac0abf5c7e6c662fc5172758c5a.patch";
       hash = "sha256-LmvKUTViZoY/TPBmSlx4S9FbJNZfB5cxzn/YcciDmoI=";
     })
-    # remove half broken pyasn1 integration that blow up with pyasn 0.5.0
-    # https://github.com/twisted/twisted/pull/11843
-    (fetchpatch {
-      url = "https://github.com/twisted/twisted/commit/bdee0eb835a76b2982beaf10c85269ff25ea09fa.patch";
-      excludes = [ "pyproject.toml" "tox.ini" ];
-      hash = "sha256-oGAHmZMpMWfK+2zEDjHD115sW7exCYqfORVOLw+Wa6M=";
-    })
-  ] ++ lib.optionals (pythonAtLeast "3.11") [
-    (fetchpatch {
-      url = "https://github.com/twisted/twisted/pull/11734.diff";
-      excludes = [ ".github/workflows/*" ];
-      hash = "sha256-Td08pDxHwl7fPLCA6rUySuXpy8YmZfvXPHGsBpdcmSo=";
-    })
-    (fetchpatch {
-      url = "https://github.com/twisted/twisted/commit/00bf5be704bee022ba4d9b24eb6c2c768b4a1921.patch";
-      hash = "sha256-fnBzczm3OlhbjRcePIQ7dSX6uldlCZ9DJTS+UFO2nAQ=";
-    })
   ];
 
   __darwinAllowLocalNetworking = true;
+
+  nativeBuildInputs = [
+    hatchling
+    hatch-fancy-pypi-readme
+  ];
 
   propagatedBuildInputs = [
     attrs
