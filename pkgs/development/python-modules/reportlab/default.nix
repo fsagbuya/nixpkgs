@@ -12,11 +12,11 @@ let
   ft = freetype.overrideAttrs (oldArgs: { dontDisableStatic = true; });
 in buildPythonPackage rec {
   pname = "reportlab";
-  version = "3.6.13";
+  version = "4.0.4";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-b3XTP3o3IM9HNxq2PO0PDr0a622xk4aukviXegm+lhE=";
+    hash = "sha256-f3CztWr/XxHLQTbFGg9aVv5uTI+7rHuQMHbbmajvMcE=";
   };
 
   patches = [
