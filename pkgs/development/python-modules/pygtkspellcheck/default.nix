@@ -2,11 +2,11 @@
 
 buildPythonPackage rec {
   pname = "pygtkspellcheck";
-  version = "5.0.1";
+  version = "5.0.2";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-hIHf1LBmFhPWN138jaAAOpmx+frbe6XM22+jG+OWcvw=";
+    hash = "sha256-rWV/ghoMWHOAmT8ablwOjJSEhtvPqT/UdoZBXL5Nj0s=";
   };
 
   nativeBuildInputs = [ gobject-introspection ];
