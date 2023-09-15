@@ -7,14 +7,14 @@
 
 buildPythonPackage rec {
   pname = "webcolors";
-  version = "1.12";
+  version = "1.13";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-FtBD06CP1qGxt+Pp5iZA0JeQ3OgNK91HkqF1s1/nlKk=";
+    hash = "sha256-wiW2dMg/qSO+k9I1MwzgMANz0CiFzvIyOIE7DVZoMEo=";
   };
 
   nativeCheckInputs = [ unittestCheckHook ];
