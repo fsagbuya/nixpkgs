@@ -7,13 +7,13 @@
 
 buildPythonPackage rec {
   pname = "sphinx-prompt";
-  version = "1.5.0";
+  version = "1.8.0";
 
   src = fetchFromGitHub {
     owner = "sbrunner";
     repo = "sphinx-prompt";
-    rev = version;
-    hash = "sha256-ClUPAIyPrROJw4GXeakA8U443Vlhy3P/2vFnAtyrPHU=";
+    rev = "refs/tags/${version}";
+    hash = "sha256-jgPD5DBpcj+/FqCI+lkycyYqQHnE8DQLrGLmr5iYBqE=";
   };
 
   propagatedBuildInputs = [ sphinx ];
