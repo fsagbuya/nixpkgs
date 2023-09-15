@@ -18,14 +18,14 @@
 
 buildPythonPackage rec {
   pname = "cramjam";
-  version = "2.6.2.post1";
+  version = "2.7.0";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "milesgranger";
     repo = "pyrus-cramjam";
     rev = "refs/tags/v${version}";
-    hash = "sha256-KU1JVNEQJadXNiIWTvI33N2NSq994xoKxcAGGezFjaI=";
+    hash = "sha256-V1Dsk5zCBiGkgpMjEfExHg5Ju59KRQM89mq1d+aDLz0=";
   };
 
   cargoDeps = rustPlatform.fetchCargoTarball {
