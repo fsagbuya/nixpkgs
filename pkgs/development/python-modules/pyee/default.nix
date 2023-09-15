@@ -13,14 +13,14 @@
 
 buildPythonPackage rec {
   pname = "pyee";
-  version = "9.0.4";
+  version = "11.0.0";
   format = "setuptools";
 
   disabled = pythonOlder "3.6";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-J3DEkoq8ch9GtwXmpysMWUgMSmnJqDygsAu5lPHqSzI=";
+    hash = "sha256-J8aCvOYL2txdPiPqzUEB3zKMAoCISj2cB/Ok4+WV3ic=";
   };
 
   buildInputs = [
