@@ -16,7 +16,7 @@
 
 buildPythonPackage rec {
   pname = "safetensors";
-  version = "0.3.1";
+  version = "0.3.3";
   format = "pyproject";
 
   disabled = pythonOlder "3.7";
@@ -25,7 +25,7 @@ buildPythonPackage rec {
     owner = "huggingface";
     repo = pname;
     rev = "refs/tags/v${version}";
-    hash = "sha256-RoIBD+zBKVzXE8OpI8GR371YPxceR4P8B9T1/AHc9vA=";
+    hash = "sha256-U+indMoLFN6vMZkJTWFG08lsdXuK5gOfgaHmUVl6DPk=";
   };
 
   cargoDeps = rustPlatform.fetchCargoTarball {
