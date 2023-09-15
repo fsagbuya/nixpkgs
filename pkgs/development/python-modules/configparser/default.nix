@@ -2,12 +2,12 @@
 
 buildPythonPackage rec {
   pname = "configparser";
-  version = "5.3.0";
+  version = "6.0.0";
   format = "pyproject";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-i+JngktUHAmwjbEkkX9Iq1JabD6DcBHzEweBoiTFcJA=";
+    hash = "sha256-7JFKseVsZy3h9cNIOWTmj3GzTkV5BLe3bga5Iq7AZ6g=";
   };
 
   nativeBuildInputs = [ setuptools-scm ];
