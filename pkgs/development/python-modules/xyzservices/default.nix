@@ -9,12 +9,12 @@
 
 buildPythonPackage rec {
   pname = "xyzservices";
-  version = "2023.2.0";
+  version = "2023.7.0";
   format = "setuptools";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-M0K7pBDXlBKQ7tDlii5arbD3uXhj7EKDsoPEBu5yOig=";
+    hash = "sha256-DskodCIn1vXUNn6ntFf8/tlDQp9N4pSbWwKoLN9VadY=";
   };
 
   disabledTests = [
