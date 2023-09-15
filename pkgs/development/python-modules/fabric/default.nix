@@ -11,11 +11,11 @@
 
 buildPythonPackage rec {
   pname = "fabric";
-  version = "3.0.0";
+  version = "3.2.2";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-v+lgwa6QTnYkr51ArVubmVge2cT9CTScDQK3SG4dD4k=";
+    hash = "sha256-h4PKQuOwB28IsmkBqsa52bHxnEEAdOesz6uQLBhP9KM=";
   };
 
   # only relevant to python < 3.4
