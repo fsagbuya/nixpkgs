@@ -14,12 +14,12 @@
 
 buildPythonPackage rec {
   pname = "pycurl";
-  version = "7.45.1";
+  version = "7.45.2";
   disabled = isPyPy || (pythonOlder "3.5"); # https://github.com/pycurl/pycurl/issues/208
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-qGOtGP9Hj1VFkkBXiHza5CLhsnRuQWdGFfaHSY6luIo=";
+    hash = "sha256-VzBZC+AnE2Slvd2eJFycwPtxDEy6y92VJkoxItIyJMo=";
   };
 
   patches = [
