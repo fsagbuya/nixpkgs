@@ -10,11 +10,11 @@
 
 buildPythonPackage rec {
   pname = "clickhouse-cli";
-  version = "0.3.8";
+  version = "0.3.9";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-pa3vkIyNblS1LOwBReTqg8JAR2Ii32a2QIHWjau0uZE=";
+    hash = "sha256-gkgLAedUtzGv/4P+D56M2Pb5YecyqyVYp06ST62sjdY=";
   };
 
   propagatedBuildInputs = [
