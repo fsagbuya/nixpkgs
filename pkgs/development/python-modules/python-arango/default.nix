@@ -23,7 +23,7 @@ in
 
 buildPythonPackage rec {
   pname = "python-arango";
-  version = "7.5.7";
+  version = "7.6.2";
   format = "setuptools";
 
   disabled = pythonOlder "3.7";
@@ -32,7 +32,7 @@ buildPythonPackage rec {
     owner = "ArangoDB-Community";
     repo = "python-arango";
     rev = "refs/tags/${version}";
-    hash = "sha256-cd2xE5rYLl3NOv/DZjmHRPCe224k4XyPjo9aXV1ZhvU=";
+    hash = "sha256-1n+3Rl945NQ3Ugd6UKhN429vTz1ky2Qr43fI0TrgrBU=";
   };
 
   propagatedBuildInputs = [
