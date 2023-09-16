@@ -51,6 +51,10 @@ buildPythonPackage rec {
     mercurial
   ];
 
+  pytestFlagsArray = [
+    "-W" "ignore::pydantic.warnings.PydanticDeprecatedSince20"
+  ];
+
   disabledTests = [
     # wants to write to the Nix store
     "test_editable_mode"
