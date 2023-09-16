@@ -7,6 +7,8 @@
 buildPythonPackage rec {
   pname = "jaraco-classes";
   version = "3.3.0";
+  format = "pyproject";
+
   disabled = isPy27;
 
   src = fetchFromGitHub {
