@@ -1,4 +1,4 @@
-{ lib, fetchPypi, buildPythonPackage, lzo, nose }:
+{ lib, fetchPypi, buildPythonPackage, lzo, pytestCheckHook }:
 
 buildPythonPackage rec {
   pname = "python-lzo";
@@ -11,7 +11,7 @@ buildPythonPackage rec {
 
   buildInputs = [ lzo ];
   propagatedBuildInputs = [ ];
-  nativeCheckInputs = [ nose ];
+  nativeCheckInputs = [ pytestCheckHook ];
 
   meta = with lib; {
     homepage = "https://github.com/jd-boyd/python-lzo";
