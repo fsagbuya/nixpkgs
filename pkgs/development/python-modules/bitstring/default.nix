@@ -2,6 +2,7 @@
 , buildPythonPackage
 , fetchFromGitHub
 , pythonOlder
+, bitarray
 , setuptools
 , unittestCheckHook
 }:
@@ -22,6 +23,10 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [
     setuptools
+  ];
+
+  propagatedBuildInputs = [
+    bitarray
   ];
 
   nativeCheckInputs = [ unittestCheckHook ];
