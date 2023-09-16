@@ -3,7 +3,7 @@
 , fetchPypi
 , flask
 , mock
-, pdm-pep517
+, flit-core
 , pytestCheckHook
 , pythonOlder
 , sqlalchemy
@@ -17,13 +17,13 @@ buildPythonPackage rec {
   disabled = pythonOlder "3.9";
 
   src = fetchPypi {
-    pname = "Flask-SQLAlchemy";
+    pname = "flask_sqlalchemy";
     inherit version;
     hash = "sha256-5LaLuIGALdoafYeLL8hMBtHuV/tAuHTT3Jfav6NrgxI=";
   };
 
   nativeBuildInputs = [
-    pdm-pep517
+    flit-core
   ];
 
   propagatedBuildInputs = [
