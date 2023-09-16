@@ -1,7 +1,6 @@
 { lib
 , buildPythonPackage
 , fetchPypi
-, fetchpatch
 , plaster
 , pastedeploy
 , pytestCheckHook
@@ -12,18 +11,10 @@ buildPythonPackage rec {
   version = "1.0.1";
 
   src = fetchPypi {
-    inherit pname version;
-    sha256 = "sha256-viYubS5BpyZIddqi/ihQy7BhVyi83JKCj9xyc244FBI=";
+    pname = "plaster_pastedeploy";
+    inherit version;
+    hash = "sha256-viYubS5BpyZIddqi/ihQy7BhVyi83JKCj9xyc244FBI=";
   };
-
-  patches = [
-    # Fix tests compatibility with pastedeploy 2+
-    # https://github.com/Pylons/plaster_pastedeploy/pull/17
-    (fetchpatch {
-      url = "https://github.com/Pylons/plaster_pastedeploy/commit/d77d81a57e917c67a20332beca8f418651172905.patch";
-      sha256 = "0n5vnqn8kad41kn9grcwiic6c6rhvy1ji3w81s2v9xyk0bd9yryf";
-    })
-  ];
 
   propagatedBuildInputs = [ plaster pastedeploy ];
 
