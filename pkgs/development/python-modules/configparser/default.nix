@@ -18,6 +18,12 @@ buildPythonPackage rec {
     export LC_ALL=${if stdenv.isDarwin then "en_US" else "C"}.UTF-8
   '';
 
+  preCheck = ''
+    # avoid FileNotFoundError
+    # FileNotFoundError: [Errno 2] No such file or directory: 'cfgparser.3'
+    cd tests
+  '';
+
   meta = with lib; {
     description = "Updated configparser from Python 3.7 for Python 2.6+.";
     homepage = "https://github.com/jaraco/configparser";
