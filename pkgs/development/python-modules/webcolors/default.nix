@@ -3,12 +3,13 @@
 , fetchPypi
 , pythonOlder
 , unittestCheckHook
+, setuptools
 }:
 
 buildPythonPackage rec {
   pname = "webcolors";
   version = "1.13";
-  format = "setuptools";
+  format = "pyproject";
 
   disabled = pythonOlder "3.7";
 
@@ -16,6 +17,10 @@ buildPythonPackage rec {
     inherit pname version;
     hash = "sha256-wiW2dMg/qSO+k9I1MwzgMANz0CiFzvIyOIE7DVZoMEo=";
   };
+
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   nativeCheckInputs = [ unittestCheckHook ];
 
