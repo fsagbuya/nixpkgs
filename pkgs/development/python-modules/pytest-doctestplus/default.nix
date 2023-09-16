@@ -1,6 +1,7 @@
 { lib
 , buildPythonPackage
 , fetchPypi
+, numpy
 , packaging
 , pytest
 , pytestCheckHook
@@ -35,6 +36,7 @@ buildPythonPackage rec {
   ];
 
   nativeCheckInputs = [
+    numpy
     pytestCheckHook
   ];
 
