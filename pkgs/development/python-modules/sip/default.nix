@@ -2,11 +2,13 @@
 , stdenv
 , buildPythonPackage
 , fetchPypi
+, pythonOlder
 , setuptools
 , wheel
 , packaging
 , ply
 , toml
+, tomli
 }:
 
 buildPythonPackage rec {
@@ -25,7 +27,9 @@ buildPythonPackage rec {
     wheel
   ];
 
-  propagatedBuildInputs = [ packaging ply toml ];
+  propagatedBuildInputs = [ packaging ply toml ] ++ lib.optionals (pythonOlder "3.11") [
+    tomli
+  ];
 
   # There aren't tests
   doCheck = false;
