@@ -3,7 +3,6 @@
 , buildPythonPackage
 , isPyPy
 , fetchPypi
-, fetchpatch
 , pythonOlder
 , curl
 , openssl
@@ -21,16 +20,6 @@ buildPythonPackage rec {
     inherit pname version;
     hash = "sha256-VzBZC+AnE2Slvd2eJFycwPtxDEy6y92VJkoxItIyJMo=";
   };
-
-  patches = [
-    # Pull upstream patch for curl-3.83:
-    #  https://github.com/pycurl/pycurl/pull/753
-    (fetchpatch {
-      name = "curl-3.83.patch";
-      url = "https://github.com/pycurl/pycurl/commit/d47c68b1364f8a1a45ab8c584c291d44b762f7b1.patch";
-      hash = "sha256-/lGq7O7ZyytzBAxWJPigcWdvypM7OHLBcp9ItmX7z1g=";
-    })
-  ];
 
   preConfigure = ''
     substituteInPlace setup.py --replace '--static-libs' '--libs'
@@ -75,6 +64,8 @@ buildPythonPackage rec {
     "test_libcurl_ssl_gnutls"
     # AssertionError: assert 'crypto' in ['curl']
     "test_ssl_in_static_libs"
+    # tests that require curl with http3Support
+    "test_http_version_3"
   ] ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
     # Fatal Python error: Segmentation fault
     "cadata_test"
