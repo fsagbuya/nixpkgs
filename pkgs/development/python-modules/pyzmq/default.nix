@@ -7,6 +7,7 @@
 , pythonOlder
 , tornado
 , zeromq
+, pytest-asyncio
 }:
 
 buildPythonPackage rec {
@@ -32,6 +33,7 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     pytestCheckHook
     tornado
+    pytest-asyncio
   ];
 
   pythonImportsCheck = [
@@ -40,6 +42,9 @@ buildPythonPackage rec {
 
   pytestFlagsArray = [
     "$out/${python.sitePackages}/zmq/tests/" # Folder with tests
+    # pytest.ini is missing in pypi's sdist
+    # https://github.com/zeromq/pyzmq/issues/1853#issuecomment-1592731986
+    "--asyncio-mode auto"
   ];
 
   disabledTests = [
