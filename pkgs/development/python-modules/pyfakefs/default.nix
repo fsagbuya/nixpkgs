@@ -32,6 +32,12 @@ buildPythonPackage rec {
   nativeCheckInputs = [ pytestCheckHook ];
   # https://github.com/jmcgeheeiv/pyfakefs/issues/581 (OSError: [Errno 9] Bad file descriptor)
   disabledTests = [ "test_open_existing_pipe" ];
+
+  disabledTestPaths = [
+    # try to import opentimelineio but nixpkgs doesn't have it as of 2023-09-16
+    "pyfakefs/pytest_tests/segfault_test.py"
+  ];
+
   pythonImportsCheck = [ "pyfakefs" ];
 
   meta = with lib; {
