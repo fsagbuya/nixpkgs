@@ -1,6 +1,7 @@
 { lib
 , buildPythonPackage
 , fetchFromGitHub
+, fetchpatch
 , regex
 , pytestCheckHook
 , js2py
@@ -18,6 +19,15 @@ buildPythonPackage rec {
     rev = "refs/tags/${version}";
     hash = "sha256-k74tozIgJuwtUqKKmYHlfLpCWyT2hdoygRJiIpw+GDE=";
   };
+
+  patches = [
+    # include .lark files in package data
+    # https://github.com/lark-parser/lark/pull/1308
+    (fetchpatch {
+      url = "https://github.com/lark-parser/lark/commit/656334cb8793fd4e08a12843eaced5a7bb518be3.patch";
+      hash = "sha256-pYeNnFfXJ8xkR0KsU/KMWJ8nF+BhP9PXEANiVhT254s=";
+    })
+  ];
 
   nativeBuildInputs = [
     setuptools
