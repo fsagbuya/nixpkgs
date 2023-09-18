@@ -20,13 +20,13 @@ let
 in
 buildPythonPackage rec {
   pname = "pyqtgraph";
-  version = "0.13.3";
+  version = "0.12.2";
 
   src = fetchFromGitHub {
     owner = "pyqtgraph";
     repo = "pyqtgraph";
-    rev = "refs/tags/pyqtgraph-${version}";
-    sha256 = "sha256-kFTNhv8pgIRSJX0ePmp1I0+MGfCaW8b86baIYZ2bZQM=";
+    rev = "pyqtgraph-${version}";
+    sha256 = "093kkxwj75nb508vz7px4x7lxrwpaff10pl15m4h74hjwyvbsg3d";
   };
 
   # TODO: remove when updating to 0.12.3

@@ -7,12 +7,12 @@
 
 buildPythonPackage rec {
   pname = "pyopengl";
-  version = "3.1.7";
+  version = "3.1.6";
 
   src = fetchPypi {
     pname = "PyOpenGL";
     inherit version;
-    hash = "sha256-7vMaOIjmmE/U2ObJlhsYTJgTyoJgTTf+PagOsACnbIY=";
+    hash = "sha256-jqbIdzkn7adAW//G9buTvoFWmnsFyMrFDNlOlp3OXic=";
   };
 
   propagatedBuildInputs = [ pillow ];
