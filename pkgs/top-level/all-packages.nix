@@ -660,6 +660,8 @@ with pkgs;
 
   flaca = callPackage ../applications/graphics/flaca { };
 
+  flarum = callPackage ../servers/web-apps/flarum { };
+
   frece = callPackage ../development/tools/frece { };
 
   frida-tools = callPackage ../tools/security/frida-tools { };
