@@ -13,13 +13,13 @@
 
 stdenv.mkDerivation rec {
   pname = "rt";
-  version = "5.0.5";
+  version = "6.0.1";
 
   src = fetchFromGitHub {
     repo = "rt";
     rev = "rt-${version}";
     owner = "bestpractical";
-    hash = "sha256-4E6xEk1sIiNBKJT4jD+SNK8Fs+hX8EuTv+jD1U1g6qY=";
+    hash = "sha256-liI+ycSS98YXQOJ+hKz9cMRMotwuO238X7oPT/d5/xs=";
   };
 
   patches = [
@@ -39,38 +39,43 @@ stdenv.mkDerivation rec {
       paths =
         with perlPackages;
         (requiredPerlModules [
+          # Core dependencies
           ApacheSession
           BusinessHours
+          CGI
           CGIEmulatePSGI
           CGIPSGI
-          CSSMinifierXS
-          CSSSquish
+          ClassAccessorFast
+          Clone
           ConvertColor
           CryptEksblowfish
-          CryptSSLeay
-          CryptX509
-          DBDPg
-          DBIxSearchBuilder
+          CSSInliner
+          CSSMinifierXS
+          CSSSquish
           DataGUID
           DataICal
           DataPage
-          DataPagePageset
           DateExtract
           DateManip
+          DateTime
           DateTimeFormatNatural
+          DateTimeLocale
+          DBI
+          DBIxSearchBuilder
+          DBDPg
           DevelGlobalDestruction
+          DevelStackTrace
+          DigestMD5
+          DigestSHA
           EmailAddress
           EmailAddressList
+          Encode
           EncodeDetect
           EncodeHanExtra
-          FCGI
-          FCGIProcManager
           FileShareDir
-          FileWhich
-          GD
-          GDGraph
-          GnuPGInterface
-          GraphViz2
+          FileTemp
+          HashMerge
+          HashMergeExtra
           HTMLFormatExternal
           HTMLFormatTextWithLinks
           HTMLFormatTextWithLinksAndTables
@@ -80,41 +85,40 @@ stdenv.mkDerivation rec {
           HTMLQuoted
           HTMLRewriteAttributes
           HTMLScrubber
-          IPCRun
+          HTTPMessage
+          Imager
           IPCRun3
-          JSON
           JavaScriptMinifierXS
-          LWP
-          LWPProtocolHttps
+          JSON
+          ListMoreUtils
+          LocaleMaketext
           LocaleMaketextFuzzy
           LocaleMaketextLexicon
           LogDispatch
+          LWP
+          LWPProtocolHttps
+          LWPUserAgent
           MIMETools
           MIMETypes
           MailTools
-          ModulePath
           ModuleRefresh
+          ModuleRuntime
           ModuleVersionsReport
-          Moose
-          MooseXNonMoose
-          MooseXRoleParameterized
           MozillaCA
           NetCIDR
           NetIP
           ParallelForkManager
           PathDispatcher
-          PerlIOeol
           Plack
-          PodParser
+          Starlet
           RegexpCommon
           RegexpCommonnetCIDR
           RegexpIPv6
           RoleBasic
           ScopeUpper
-          Starlet
-          Starman
-          StringShellQuote
+          Storable
           SymbolGlobalName
+          SysSyslog
           TermReadKey
           TextPasswordPronounceable
           TextQuoted
@@ -122,11 +126,35 @@ stdenv.mkDerivation rec {
           TextWikiFormat
           TextWordDiff
           TextWrapper
+          TimeLocal
+          TimeHiRes
           TimeParseDate
           TreeSimple
-          UNIVERSALrequire
-          WebMachine
+          URI
           XMLRSS
+
+           # Mailgate dependencies
+          GetoptLong
+          PodUsage
+          
+          # REST2 dependencies (new in RT 6)
+          Moose
+          MooseXNonMoose
+          MooseXRoleParameterized
+          namespaceautoclean
+          SubExporter
+          WebMachine
+          ModulePath
+
+          # Optional Dependencies
+          FCGI
+          FileWhich
+          GnuPGInterface
+          PerlIOeol
+          CryptX509
+          StringShellQuote
+          GraphViz2
+          IPCRun
           perlldap
         ]);
     })
@@ -145,7 +173,6 @@ stdenv.mkDerivation rec {
   '';
   configureFlags = [
     "--enable-graphviz"
-    "--enable-gd"
     "--enable-gpg"
     "--enable-smime"
     "--with-db-type=Pg"
