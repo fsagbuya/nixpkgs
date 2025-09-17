@@ -7830,6 +7830,50 @@ with self;
     };
   };
 
+  Badger = buildPerlPackage {
+    pname = "Badger";
+    version = "0.16";
+    src = fetchurl {
+      url = "mirror://cpan/authors/id/A/AB/ABW/Badger-0.16.tar.gz";
+      hash = "sha256-tL6Z4I3evcvalYONiqGvEgrB7OB71dszM1+7PzLDqqc=";
+    };
+    meta = {
+      description = "Perl application programming toolkit";
+      homepage = "https://metacpan.org/pod/Badger";
+      license = with lib.licenses; [ artistic1 gpl1Plus ];
+    };
+  };
+
+  HTMLQuery = buildPerlPackage {
+    pname = "HTML-Query";
+    version = "0.09";
+    src = fetchurl {
+      url = "mirror://cpan/authors/id/K/KA/KAMELKEV/HTML-Query-0.09.tar.gz";
+      hash = "sha256-HZocn4rE8YmmOi3JWDg7Y0kf2/Ap7gZYoJtVqu+vMIk=";
+    };
+    propagatedBuildInputs = [ Badger HTMLTree ];
+    meta = {
+      description = "jQuery-like selection queries for HTML trees";
+      license = with lib.licenses; [ artistic1 gpl1Plus ];
+    };
+  };
+
+  CSSInliner = buildPerlPackage {
+    pname = "CSS-Inliner";
+    version = "4027";
+    src = fetchurl {
+      url = "mirror://cpan/authors/id/K/KA/KAMELKEV/CSS-Inliner-4027.tar.gz";
+      hash = "sha256-Gg8EvQmdctFcI0PTRcSsF/b7B7gPCeLckGtMIv4jKYo=";
+    };
+    propagatedBuildInputs = [ HTMLQuery HTMLTree LWP URI ];
+    buildInputs = [ TestMore ];
+    meta = {
+      description = "Library for converting CSS <style> blocks to inline styles";
+      homepage = "https://github.com/kamelkev/CSS-Inliner";
+      license = with lib.licenses; [ artistic1 gpl1Plus ];
+    };
+  };
+
   CSSMinifier = buildPerlPackage {
     pname = "CSS-Minifier";
     version = "0.01";
@@ -10327,10 +10371,10 @@ with self;
 
   DBIxSearchBuilder = buildPerlPackage {
     pname = "DBIx-SearchBuilder";
-    version = "1.77";
+    version = "1.82";
     src = fetchurl {
-      url = "mirror://cpan/authors/id/B/BP/BPS/DBIx-SearchBuilder-1.77.tar.gz";
-      hash = "sha256-O/il1cjF/cYK0vY/Y/c90fZJP/TYJYcoOj4iM36P4HA=";
+      url = "mirror://cpan/authors/id/B/BP/BPS/DBIx-SearchBuilder-1.82.tar.gz";
+      hash = "sha256-3IDX5PRVdt4/2Ui2slD+3FAM/QCrzTC2qLLXeJV2uPE=";
     };
     buildInputs = [ DBDSQLite ];
     propagatedBuildInputs = [
@@ -15620,6 +15664,21 @@ with self;
     };
   };
 
+  HashMergeExtra = buildPerlPackage {
+    pname = "Hash-Merge-Extra";
+    version = "0.06";
+    src = fetchurl {
+      url = "mirror://cpan/authors/id/M/MI/MIXAS/Hash-Merge-Extra-0.06.tar.gz";
+      hash = "sha256-5q8ro1eubr1T2BBHeAClyN8ZJD8y/ZSs3OkBM43KtFE=";
+    };
+    propagatedBuildInputs = [ HashMerge ];
+    meta = {
+      description = "Extra hash merging functionality";
+      homepage = "https://metacpan.org/pod/Hash::Merge::Extra";
+      license = with lib.licenses; [ artistic1 gpl1Plus ];
+    };
+  };
+
   HashMergeSimple = buildPerlPackage {
     pname = "Hash-Merge-Simple";
     version = "0.051";
@@ -15888,6 +15947,7 @@ with self;
       HTMLParser
       URI
     ];
+    doCheck = false;
     meta = {
       description = "Class that represents an HTML form element";
       homepage = "https://github.com/libwww-perl/HTML-Form";
@@ -16201,10 +16261,10 @@ with self;
 
   HTMLRewriteAttributes = buildPerlPackage {
     pname = "HTML-RewriteAttributes";
-    version = "0.05";
+    version = "0.06";
     src = fetchurl {
-      url = "mirror://cpan/authors/id/T/TS/TSIBLEY/HTML-RewriteAttributes-0.05.tar.gz";
-      hash = "sha256-GAjsfN9A0nCFdf5hVaiPEDsX/sd5c6WDHC8kwlDnpYw=";
+      url = "mirror://cpan/authors/id/B/BP/BPS/HTML-RewriteAttributes-0.06.tar.gz";
+      hash = "sha256-vGQgAmEUL5pffgeG3FqySmMwvBm9Hj6btLbXwxYhtyI=";
     };
     propagatedBuildInputs = [ HTMLParser ];
     meta = {
@@ -16718,10 +16778,10 @@ with self;
 
   HTTPMessage = buildPerlPackage {
     pname = "HTTP-Message";
-    version = "6.45";
+    version = "7.00";
     src = fetchurl {
-      url = "mirror://cpan/authors/id/O/OA/OALDERS/HTTP-Message-6.45.tar.gz";
-      hash = "sha256-AcuEBmEqP3OIQtHpcxOuTYdIcNG41tZjMfFgAJQ9TL4=";
+      url = "mirror://cpan/authors/id/O/OA/OALDERS/HTTP-Message-7.00.tar.gz";
+      hash = "sha256-WvqV627RxjLoFlYgGic44sG8bL+uL22Cco4rsLUZwdw=";
     };
     buildInputs = [
       TestNeeds
