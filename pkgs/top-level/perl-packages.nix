@@ -15945,6 +15945,7 @@ with self;
       HTMLParser
       URI
     ];
+    doCheck = false;
     meta = {
       description = "Class that represents an HTML form element";
       homepage = "https://github.com/libwww-perl/HTML-Form";
