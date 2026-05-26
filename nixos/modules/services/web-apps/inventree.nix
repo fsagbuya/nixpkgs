@@ -9,6 +9,26 @@ let
   cfg = config.services.inventree;
   settingsFormat = pkgs.formats.yaml { };
   configFile = settingsFormat.generate "inventree-config.yaml" cfg.settings;
+
+  # Hardcoded to match `StateDirectory` below.
+  dataDir = "/var/lib/inventree";
+
+  inventree-manage = pkgs.writeShellScriptBin "inventree-manage" ''
+    set -o allexport
+    INVENTREE_CONFIG_FILE=${configFile}
+    set +o allexport
+
+    sudo=exec
+    if [[ "$USER" != "${cfg.user}" ]]; then
+      ${
+        if config.security.sudo.enable then
+          "sudo='exec ${config.security.wrapperDir}/sudo -u ${cfg.user} -E'"
+        else
+          ">&2 echo 'Aborting, inventree-manage must be run as user `${cfg.user}`!'; exit 2"
+      }
+    fi
+    $sudo ${lib.getExe cfg.package} "$@"
+  '';
 in
 {
   options.services.inventree = {
@@ -28,14 +48,6 @@ in
       description = "Group under which InvenTree runs.";
     };
 
-    dataDir = lib.mkOption {
-      type = lib.types.str;
-      default = "/var/lib/inventree";
-      description = ''
-        Storage directory for InvenTree state (media, static files, backups).
-      '';
-    };
-
     host = lib.mkOption {
       type = lib.types.str;
       default = "127.0.0.1";
@@ -49,15 +61,14 @@ in
     };
 
     secretKeyFile = lib.mkOption {
-      type = lib.types.path;
+      type = lib.types.str;
+      default = "${dataDir}/secret_key.txt";
       description = ''
-        Path to a file containing the Django `SECRET_KEY`. The file must be
-        readable by the {option}`services.inventree.user`.
+        Path to a file containing the Django `SECRET_KEY`. If the file does
+        not exist on first start, InvenTree will generate a random key and
+        write it there automatically.
 
-        Generate one with:
-        ```
-        head -c50 /dev/urandom | base64
-        ```
+        The file must be writable by {option}`services.inventree.user`.
       '';
     };
 
@@ -106,10 +117,15 @@ in
   config = lib.mkIf cfg.enable {
     services.inventree.settings = {
       debug = lib.mkDefault false;
-      static_root = lib.mkDefault "${cfg.dataDir}/static";
-      media_root = lib.mkDefault "${cfg.dataDir}/media";
-      backup_dir = lib.mkDefault "${cfg.dataDir}/backup";
-      secret_key_file = lib.mkDefault (toString cfg.secretKeyFile);
+      static_root = lib.mkDefault "${cfg.package}/lib/inventree/static";
+      media_root = lib.mkDefault "${dataDir}/media";
+      backup_dir = lib.mkDefault "${dataDir}/backup";
+      secret_key_file = lib.mkDefault cfg.secretKeyFile;
+
+      # InvenTree auto-creates these on first load; without explicit paths
+      # they fall back to /nix/store (next to config.yaml) and crash.
+      plugin_file = lib.mkDefault "${dataDir}/plugins.txt";
+      oidc_private_key_file = lib.mkDefault "${dataDir}/oidc.pem";
 
       database = lib.mkIf cfg.database.createLocally {
         engine = lib.mkDefault "postgresql";
@@ -133,18 +149,18 @@ in
     users.users.${cfg.user} = {
       isSystemUser = true;
       group = cfg.group;
-      home = cfg.dataDir;
+      home = dataDir;
     };
     users.groups.${cfg.group} = { };
 
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [ inventree-manage ];
 
     systemd.services =
       let
         commonServiceConfig = {
           User = cfg.user;
           Group = cfg.group;
-          WorkingDirectory = cfg.dataDir;
+          WorkingDirectory = dataDir;
           StateDirectory = "inventree";
           StateDirectoryMode = "0750";
           Restart = "on-failure";
@@ -169,9 +185,8 @@ in
           environment = commonEnv;
 
           preStart = ''
-            mkdir -p ${cfg.dataDir}/static ${cfg.dataDir}/media ${cfg.dataDir}/backup
+            mkdir -p ${dataDir}/media ${dataDir}/backup
             ${cfg.package}/bin/inventree migrate --no-input
-            ${cfg.package}/bin/inventree collectstatic --no-input --clear
           '';
 
           serviceConfig = commonServiceConfig // {
@@ -189,7 +204,6 @@ in
           documentation = [ "https://docs.inventree.org/" ];
           wantedBy = [ "multi-user.target" ];
           after = [ "inventree-server.service" ];
-          requires = [ "inventree-server.service" ];
 
           environment = commonEnv;
 
@@ -200,5 +214,5 @@ in
       };
   };
 
-  meta.maintainers = with lib.maintainers; [ ];
+  meta.maintainers = with lib.maintainers; [ fsagbuya ];
 }
